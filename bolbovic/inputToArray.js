@@ -3,8 +3,11 @@ const util = require("util");
 
 const eachLine = util.promisify(lineReader.eachLine);
 
-module.exports = async function inputToArray() {
+module.exports = async function inputToArray(
+  fileName = "input.txt",
+  ftc = (line) => parseInt(line)
+) {
   const array = [];
-  await eachLine("input.txt", (line) => array.push(parseInt(line)));
+  await eachLine(fileName, (line) => array.push(ftc(line)));
   return array;
 };
