@@ -1,9 +1,9 @@
-const inputToArray = require("./inputToArray");
+const inputToArray = require("../utils/inputToArray");
 
 const bingo = (a) => a.filter((num) => num.includes("x")).length === 5;
 
 async function processing() {
-  const input = await inputToArray("input-day4.txt", (line) => line);
+  const input = await inputToArray((line) => line);
   const draws = input.shift().split(",");
   input.shift();
   let board = [];
@@ -31,7 +31,6 @@ async function processing() {
   const allBoards = boards.concat(vertBoards);
   let solution = 0;
   for (let i = 0; i < draws.length && solution === 0; i++) {
-    console.log(i);
     for (let j = 0; j < allBoards.length && solution === 0; j++) {
       for (let k = 0; k < allBoards[j].length && solution === 0; k++) {
         const line = allBoards[j][k];

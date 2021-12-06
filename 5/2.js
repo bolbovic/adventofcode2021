@@ -1,8 +1,8 @@
-const inputToArray = require("./inputToArray");
+const inputToArray = require("../utils/inputToArray");
 
 async function processing() {
   let max = 0;
-  const input = await inputToArray("input-day5.txt", (line) =>
+  const input = await inputToArray((line) =>
     line.split(" -> ").map((coord) => {
       const a = coord.split(",").map((c) => parseInt(c));
       if (a[0] > max) max = a[0];

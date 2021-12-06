@@ -1,9 +1,9 @@
-const inputToArray = require("./inputToArray");
+const inputToArray = require("../utils/inputToArray");
 
 async function processing() {
   let max = 0;
   const input = (
-    await inputToArray("input-day5.txt", (line) =>
+    await inputToArray((line) =>
       line.split(" -> ").map((coord) => {
         const a = coord.split(",").map((c) => parseInt(c));
         if (a[0] > max) max = a[0];
@@ -25,16 +25,13 @@ async function processing() {
       const to = p1[1] < p2[1] ? p2[1] : p1[1];
       const x = p1[0];
       sum += to - from + 1;
-      for (let y = from; y <= to; y++) {
-        grid[x][y] = grid[x][y] + 1;
-        console.log(from, to, x, y, grid[x][y]);
-      }
+      for (let y = from; y <= to; y++) grid[x][y]++;
     } else {
       const from = p1[0] < p2[0] ? p1[0] : p2[0];
       const to = p1[0] < p2[0] ? p2[0] : p1[0];
       const y = p1[1];
       sum += to - from + 1;
-      for (let x = from; x <= to; x++) grid[x][y] = grid[x][y] + 1;
+      for (let x = from; x <= to; x++) grid[x][y]++;
     }
   });
   const sol = grid

@@ -1,7 +1,7 @@
-const inputToArray = require("./inputToArray");
+const inputToArray = require("../utils/inputToArray");
 
 async function processing() {
-  let oxArray = await inputToArray("input-day3.txt", (line) => {
+  let oxArray = await inputToArray((line) => {
     const obj = {};
     line.split("").forEach((bit, idx) => (obj[idx] = bit));
     return obj;
